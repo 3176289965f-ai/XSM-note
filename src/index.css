@@ -1,0 +1,203 @@
+@import "tailwindcss";
+
+@layer utilities {
+  /* Dynamic flow background float animations */
+  @keyframes float-slow {
+    0%, 100% {
+      transform: translate(0px, 0px) scale(1);
+    }
+    33% {
+      transform: translate(30px, -50px) scale(1.1);
+    }
+    66% {
+      transform: translate(-20px, 20px) scale(0.95);
+    }
+  }
+
+  @keyframes float-medium {
+    0%, 100% {
+      transform: translate(0px, 0px) scale(1) rotate(0deg);
+    }
+    50% {
+      transform: translate(-40px, 40px) scale(1.05) rotate(180deg);
+    }
+  }
+
+  @keyframes float-fast {
+    0%, 100% {
+      transform: translate(0px, 0px) scale(1);
+    }
+    50% {
+      transform: translate(25px, 35px) scale(0.9);
+    }
+  }
+}
+
+.animate-float-1 {
+  animation: float-slow 18s ease-in-out infinite;
+}
+
+.animate-float-2 {
+  animation: float-medium 22s ease-in-out infinite;
+}
+
+.animate-float-3 {
+  animation: float-fast 15s ease-in-out infinite;
+}
+
+/* Premium Frosted Glass (毛玻璃) with Apple 3D specular border light */
+.glass-panel {
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  background-color: rgba(255, 255, 255, 0.45);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.75);
+  border-left: 1px solid rgba(255, 255, 255, 0.45);
+  border-right: 1px solid rgba(255, 255, 255, 0.25);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 
+    0 12px 40px rgba(31, 38, 135, 0.05),
+    0 4px 6px rgba(0, 0, 0, 0.02),
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.6);
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.dark .glass-panel {
+  background-color: rgba(18, 18, 20, 0.45);
+  border-top: 1.2px solid rgba(255, 255, 255, 0.16);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  border-right: 1px solid rgba(255, 255, 255, 0.04);
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.45);
+  box-shadow: 
+    0 12px 45px rgba(0, 0, 0, 0.35),
+    0 2px 4px rgba(0, 0, 0, 0.15),
+    inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+/* 3D stereoscopic icon hover and reflection classes */
+.stereoscopic-icon {
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.08));
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.dark .stereoscopic-icon {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+}
+
+.stereoscopic-icon:hover {
+  transform: translateY(-2px) scale(1.1);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.14)) brightness(1.15);
+}
+
+.dark .stereoscopic-icon:hover {
+  filter: drop-shadow(0 4px 10px rgba(255, 255, 255, 0.15)) brightness(1.25);
+}
+
+/* Glass card reflection overlay keyframes for dynamic shine */
+@keyframes glass-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer-sweep {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.03) 25%,
+    rgba(255, 255, 255, 0.22) 50%,
+    rgba(255, 255, 255, 0.03) 75%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: glass-shimmer 6s infinite linear;
+}
+
+.dark .shimmer-sweep {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.01) 25%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.01) 75%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+}
+
+/* --- High-Fidelity Interaction Enhancement (点击涟漪 & 增强浮动感) --- */
+
+/* Click Ripple Keyframes and Classes */
+@keyframes dynamic-ripple {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.45;
+  }
+  40% {
+    opacity: 0.35;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+
+.ripple-canvas {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 5;
+  border-radius: inherit;
+}
+
+.ripple-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.15) 70%, rgba(255,255,255,0) 100%);
+  animation: dynamic-ripple 0.85s cubic-bezier(0.1, 0.8, 0.25, 1) forwards;
+}
+
+.dark .ripple-circle {
+  background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.08) 60%, rgba(255,255,255,0) 100%);
+}
+
+/* Levitation/Floating Enhancement: layered hyper-realistic shadows */
+.levitate-float {
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.levitate-float:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.07),
+    0 1px 3px rgba(0, 0, 0, 0.02),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.dark .levitate-float:hover {
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.55),
+    0 4px 12px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Interactive Fusion: Border color light pulsing */
+@keyframes border-glow-pulse {
+  0%, 100% {
+    border-color: rgba(255, 255, 255, 0.45);
+  }
+  50% {
+    border-color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+.border-fusion-hover:hover {
+  animation: border-glow-pulse 3s infinite ease-in-out;
+}
+
+
+
+

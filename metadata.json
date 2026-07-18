@@ -1,0 +1,6 @@
+{
+  "name": "XSM note",
+  "description": "XSM note - 基于谷歌 Keep 颜色生态设计的高级全平台智能记事本，支持双模暗黑、实时云端同步、多彩悬浮卡片、标签分类管理、点击水波涟漪、以及多端专属打包指南。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
